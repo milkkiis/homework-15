@@ -1,0 +1,148 @@
+<!-- Flexbox - это модель компоновки в CSS,
+которая упрощает выравнивание и распределение пространства
+между элементами внутри контейнера.
+display: flex - превращает элемент в flex-контейнер, а его дочерние
+элементы становятся flex-элементами.
+
+flex-direction
+Задаёт направление главной оси (по строке или по столбцу)
+row - элементы идут горизонтально 
+column - элементы выстраиваются вертикально сверху вниз
+
+
+justify-content
+Распределяет элементы вдоль главной оси	
+space-between - первый элемент прижат к началу, последний - к концу, 
+остальные распределены равномерно
+center - все элементы собираются в центре
+
+align-items	
+Выравнивает элементы вдоль поперечной оси
+center - элементы центрируются по высоте контейнера
+flex-start - прижимаются к верхнему краю
+
+align-content	
+Распределяет строки элементов вдоль поперечной оси при переносе
+space-around - строки равномерно распределяются с отступами по краям
+
+flex-wrap
+Определяет, переносятся ли элементы на новую строку, если не хватает места	
+wrap - элементы переходят на следующую строку
+nowrap - элементы сжимаются, чтобы остаться в одну строку
+
+
+flex
+Сокращённая запись для flex-grow, flex-shrink и flex-basis одновременно	
+flex: 1 эквивалентно flex-grow: 1; flex-shrink: 1; flex-basis: 0% - элемент займёт всё доступное пространство пропорционально другим
+
+flex-grow
+Определяет, насколько элемент может увеличиться относительно других при наличии свободного места
+Элемент с flex-grow: 2 займёт вдвое больше свободного пространства, чем элемент с flex-grow: 1
+
+flex-shrink
+Определяет, насколько элемент может сжаться, если места не хватает
+flex-shrink: 0 запрещает элементу сжиматься - он останется фиксированного размера, даже если контейнер станет уже
+
+flex-basis
+Задаёт базовый размер элемента до применения grow/shrink
+flex-basis: 200px - элемент изначально имеет ширину 200px, а дальше растягивается или сжимается в зависимости от grow/shrink
+
+align-self
+Переопределяет align-items контейнера для одного конкретного элемента
+align-self: flex-end - этот элемент прижмётся к нижнему краю, даже если остальные центрированы через align-items: center
+
+order
+Меняет визуальный порядок элемента без изменения его позиции в HTML-коде
+order: -1 заставит элемент отобразиться первым, даже если в разметке он записан последним
+-->
+
+
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Домашнее задание 15</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <h1>Flexbox</h1>
+
+    <h2>Контейнер с display: flex и flex-direction </h2>
+
+    <h3>flex-direction: row</h3>
+
+    <div class="container-row">
+        <div class="box">1</div>
+        <div class="box box2">2</div>
+        <div class="box box3">3</div>
+    </div>
+
+    <h3>flex-direction: column</h3>
+
+    <div class="container-column">
+        <div class="box">1</div>
+        <div class="box box2">2</div>
+        <div class="box box3">3</div>
+    </div>
+
+    <h3>justify-content: space-between; align-items: center</h3>
+
+    <div class="container-justify">
+        <div class="box">1</div>
+        <div class="box box2">2</div>
+        <div class="box box3">3</div>
+    </div>
+
+    <h2>flex-grow, flex-shrink, flex-basis</h2>
+
+    <div class="container-grow">
+        <div class="box grow-1">grow: 1</div>
+        <div class="box grow-2">grow: 2</div>
+        <div class="box grow-3">grow: 3</div>
+    </div>
+
+    <h3>flex-wrap: wrap</h3>
+
+    <div class="container-wrap">
+        <div class="wrap-item">Элемент 1</div>
+        <div class="wrap-item">Элемент 2</div>
+        <div class="wrap-item">Элемент 3</div>
+        <div class="wrap-item">Элемент 4</div>
+        <div class="wrap-item">Элемент 5</div>
+    </div>
+
+
+    <h2>Сложный адаптивный макет</h2>
+
+    <div class="layout">
+        <div class="layout-header">Заголовок сайта</div>
+        <div class="layout-body">
+        <div class="layout-nav">
+            <ul>
+            <li>Главная</li>
+            <li>О нас</li>
+            <li>Услуги</li>
+            <li>Контакты</li>
+            </ul>
+        </div>
+        <div class="layout-main">
+            <p>Основной контент страницы. При уменьшении ширины окна браузера ниже 
+                600px навигация и контент переходят из горизонтальной компоновки в вертикальную.</p>
+        </div>
+        </div>
+    </div>
+
+    <h3>Свойство order</h3>
+
+    <!-- order может использоваться в случае адаптивной верстки, например на мобильных телефонах
+    контент должен показываться в другом варианте, а не так как на ПК-->
+
+    <div class="container-order">
+        <div class="box order-a">A (order: 3)</div>
+        <div class="box box2 order-b">B (order: 1)</div>
+        <div class="box box3 order-c">C (order: 2)</div>
+    </div>
+</body>
+</html>
